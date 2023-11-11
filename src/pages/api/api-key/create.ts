@@ -4,8 +4,8 @@ import { CreateApiData } from "@/types/api";
 import { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth";
 import { z } from "zod";
-import db from "../../../../prisma/db";
 import { nanoid } from "nanoid";
+import db from "../../../../prisma/db";
 
 const handler = async (
   req: NextApiRequest,
