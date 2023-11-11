@@ -13,14 +13,17 @@ const reqSchema = z.object({
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const body = req.body as unknown;
 
-  const apiKey = req.headers.authorization;
+  const apiKeyHeader = req.headers.authorization;
 
-  if (!apiKey) {
+  if (!apiKeyHeader) {
     return res.status(401).json({ error: "Unauthorized" });
   }
 
   try {
     const { text1, text2 } = reqSchema.parse(body);
+
+    // Assuming the API key is sent as a Bearer token
+    const apiKey = apiKeyHeader.split(' ')[1];
 
     const validApiKey = await db.apiKey.findFirst({
       where: {
@@ -57,7 +60,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         path: req.url as string,
         status: httpResponseStatus,
         apiKeyId: validApiKey.id,
-        usedApiKey: validApiKey.key, // Include the 'usedApiKey' property
+        usedApiKey: validApiKey.key,
       },
     });
 
