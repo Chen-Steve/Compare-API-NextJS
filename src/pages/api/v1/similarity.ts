@@ -47,16 +47,17 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const similarity = cosineSimilarity(embeddings[0], embeddings[1]);
 
     const duration = new Date().getTime() - startTime.getTime();
-
+    const httpResponseStatus = 200; // or any other appropriate status code
+    
     // update db
     await db.apiRequest.create({
       data: {
         duration,
         method: req.method as string,
         path: req.url as string,
-        status: 200,
+        status: httpResponseStatus,
         apiKeyId: validApiKey.id,
-        usedApiKey: validApiKey.key,
+        usedApiKey: validApiKey.key, // Include the 'usedApiKey' property
       },
     });
 
