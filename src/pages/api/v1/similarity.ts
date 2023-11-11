@@ -23,7 +23,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const { text1, text2 } = reqSchema.parse(body);
 
     // Assuming the API key is sent as a Bearer token
-    const apiKey = apiKeyHeader.split(' ')[1];
+    const apiKey = apiKeyHeader.split(" ")[1];
 
     const validApiKey = await db.apiKey.findFirst({
       where: {
@@ -51,7 +51,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     const duration = new Date().getTime() - startTime.getTime();
     const httpResponseStatus = 200; // or any other appropriate status code
-    
+
     // update db
     await db.apiRequest.create({
       data: {

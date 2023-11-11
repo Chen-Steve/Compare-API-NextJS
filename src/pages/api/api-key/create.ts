@@ -5,7 +5,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth";
 import { z } from "zod";
 import db from "../../../../prisma/db";
-import { nanoid } from 'nanoid';
+import { nanoid } from "nanoid";
 
 const handler = async (
   req: NextApiRequest,
