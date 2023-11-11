@@ -20,7 +20,6 @@ export default async function createApiKey() {
     return data.createdApiKey.key;
   } catch (error) {
     // Handle network errors, timeouts, etc.
-    console.error("Error creating API key:", error);
     throw new Error("Failed to create API key. Please try again.");
   }
 }

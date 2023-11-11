@@ -20,7 +20,6 @@ export default async function revokeApiKey({ keyId }: { keyId: string }) {
     }
   } catch (error) {
     // Handle network errors or other fetch issues
-    console.error("Failed to revoke API key:", error);
     throw error; // Re-throw the error for further handling (if needed)
   }
 }
