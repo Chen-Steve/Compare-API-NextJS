@@ -61,6 +61,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         status: httpResponseStatus,
         apiKeyId: validApiKey.id,
         usedApiKey: validApiKey.key,
+        userId: validApiKey.userId,
       },
     });
 
